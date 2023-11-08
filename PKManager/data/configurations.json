@@ -1,0 +1,8 @@
+{
+  "application": {
+    "name": "pkmanager",
+    "product-name": "PKManager",
+    "version": "1.0-BETA",
+    "authors": "Moon Software"
+  }
+}

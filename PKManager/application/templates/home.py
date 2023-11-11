@@ -1,6 +1,7 @@
 import json
-from PyQt5.QtWidgets import QMainWindow, QLabel, QFrame
-from PyQt5.Qt import Qt
+from PyQt5.QtWidgets import QMainWindow, QLabel, QFrame, QTextEdit, QShortcut, QPushButton
+from PyQt5.Qt import Qt, pyqtSignal, pyqtSlot, QObject, QKeySequence
+from application.packages.PYBox import PYBox
 
 
 def collect_data():
@@ -35,3 +36,28 @@ class HOMETemplate(QMainWindow):
                               "line-height: normal; color: rgb(255, 255, 255); background-color: transparent")
         version.setGeometry(568, 375, 177, 25)
         version.setAlignment(Qt.AlignRight | Qt.AlignVCenter)
+
+        self.text_box = QTextEdit(self)
+        self.text_box.setStyleSheet("color: #ffffff; font-size: 15px; border: 0px; background-color: transparent")
+        self.text_box.setAlignment(Qt.AlignTop)
+        self.text_box.setGeometry(0, 0, 750, 375)
+
+        options = QPushButton("Options", self)
+        options.setStyleSheet("font-family: Roboto; font-size: 12px; font-style: normal; font-weight: 400;"
+                              "line-height: normal; color: rgb(255, 255, 255); background-color: transparent")
+        options.setGeometry(0, 375, 75, 25)
+
+        view = QPushButton("View", self)
+        view.setStyleSheet("font-family: Roboto; font-size: 12px; font-style: normal; font-weight: 400;"
+                              "line-height: normal; color: rgb(255, 255, 255); background-color: transparent")
+        view.setGeometry(75, 375, 75, 25)
+
+        help = QPushButton("Help", self)
+        help.setStyleSheet("font-family: Roboto; font-size: 12px; font-style: normal; font-weight: 400;"
+                              "line-height: normal; color: rgb(255, 255, 255); background-color: transparent")
+        help.setGeometry(150, 375, 75, 25)
+
+        quit = QPushButton("Quit", self)
+        quit.setStyleSheet("font-family: Roboto; font-size: 12px; font-style: normal; font-weight: 400;"
+                              "line-height: normal; color: rgb(255, 255, 255); background-color: transparent")
+        quit.setGeometry(225, 375, 75, 25)

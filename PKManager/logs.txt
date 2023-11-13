@@ -1,0 +1,4 @@
+[ 2023-11-13 23:21:50.122045 ] : Open the application
+[ 2023-11-13 23:40:19.753438 ] : Open the application
+[ 2023-11-14 00:05:47.185753 ] : Open the application
+[ 2023-11-14 00:06:18.185291 ] : Open the application

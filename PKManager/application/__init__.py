@@ -8,25 +8,31 @@ VALID_COMMANDS = []
 
 
 def load_json(file_path):
+    """Loads the contents of a JSON file."""
     try:
         with open(file_path, "r") as config_file:
             content = json.load(config_file)
-
         return content
     except FileNotFoundError as error:
-        ErrorManager(format(str(error)), "CA001")
+        ErrorManager(str(error), "CA001")
         sys.exit(5)
     except json.JSONDecodeError as error:
-        ErrorManager(format(str(error)), "CA002")
+        ErrorManager(str(error), "CA002")
         sys.exit(5)
 
 
 class CommandHandler:
-    def __init__(self, command, valid_command):
-        Logger(f"Command enter : {command}")
+    def __init__(self, command, valid_commands):
+        Logger(f"Command entered: {command}")
 
-        if command in valid_command:
-            print("Hello World")
+        if command in valid_commands:
+            self.handle_command(command)
+        else:
+            print("Invalid command. Type 'help' for available commands.")
+
+    def handle_command(self, command):
+        """Manages the execution of orders."""
+        return 0
 
 
 class ConsoleApplication:
@@ -38,6 +44,7 @@ class ConsoleApplication:
         self.handle_user_input()
 
     def print_application_info(self):
+        """Displays the application information."""
         print("{} - {}\n".format(
             self.application_config['application']['product-name'],
             self.application_config['application']['version'])
@@ -46,6 +53,7 @@ class ConsoleApplication:
               'For more information, enter the command: "help".\n')
 
     def handle_user_input(self):
+        """Manages user input in loop."""
         while self.is_running:
             user_input = input("> ")
             CommandHandler(user_input, VALID_COMMANDS)

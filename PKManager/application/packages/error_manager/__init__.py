@@ -1,11 +1,12 @@
 import datetime
 from application.packages.error_manager.manager import error_code_list
 
-ERROR_FORMAT = "[ {} ] : ERROR {} - {} "
+ERROR_FORMAT = "[{}] : ERROR {} - {}"
 
 
 class CustomError(Exception):
     """Custom exception class for handling errors."""
+
     def __init__(self, error_message, error_code):
         super().__init__(error_message)
         self.error_code = error_code
@@ -27,5 +28,10 @@ class ErrorManager:
 
     def error_output(self):
         """Print the formatted error message to the console."""
-        formatted_error = ERROR_FORMAT.format(datetime.datetime.now(), self.error.error_code, str(self.error))
+        formatted_error = ERROR_FORMAT.format(self.get_current_timestamp(), self.error.error_code, str(self.error))
         print(formatted_error)
+
+    @staticmethod
+    def get_current_timestamp():
+        """Returns the current timestamp in a formatted string."""
+        return datetime.datetime.now()
